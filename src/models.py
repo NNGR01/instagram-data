@@ -26,6 +26,33 @@ class Address(Base):
     person_id = Column(Integer, ForeignKey('person.id'))
     person = relationship(Person)
 
+class Email(Base):
+    __tablename__ = 'email'   
+    id = Column(Integer, primary_key=True)
+    email_1 = Column(String(250))
+    email_2 = Column(String(250))
+    pho_ne = Column(String(250), nullable=False)
+    person_id =Column(Integer, ForeignKey('person.id'))
+    
+class Follower(Base):
+    __tablename__ = 'follower'   
+   
+    user_from = Column(Integer, primary_key=True)
+    user_to = Column(Integer, primary_key=True)
+    pho_ne = Column(String(250))
+    person_id =Column(Integer, ForeignKey('person.id'))
+
+class Commentary(Base):
+    __tablename__ = 'commentary'   
+    id = Column(Integer, primary_key=True)
+    comment_1 = Column(String(250))
+    comment_2 = Column(String(250))
+    
+    person_id =Column(Integer, ForeignKey('person.id'))    
+    
+    
+
+
     def to_dict(self):
         return {}
 
